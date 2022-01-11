@@ -10,7 +10,7 @@ pipeline {
             parallel {
                 stage('Build Docker') {
                     steps {
-                        sh 'docker build . -t generalnitin/docker-jenkins-poc:latest'
+                        sh 'docker build . -t generalnitin/docker-jenkins-poc:$BUILD_NUMBER'
                         withCredentials([string(credentialsId: 'generalnitin-dockerhub', variable: 'docker_pwd')]) {
                             sh "docker login -u generalnitin -p ${docker_pwd}"
                         }
