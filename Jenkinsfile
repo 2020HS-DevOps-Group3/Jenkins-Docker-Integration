@@ -14,7 +14,7 @@ pipeline {
                         withCredentials([string(credentialsId: 'generalnitin-dockerhub', variable: 'docker_pwd')]) {
                             sh "docker login -u generalnitin -p ${docker_pwd}"
                         }
-                        sh "docker push generalnitin/docker-jenkins-poc:$$BUILD_NUMBER "
+                        sh "docker push generalnitin/docker-jenkins-poc:$BUILD_NUMBER"
                     }
                     post {
                         always {
